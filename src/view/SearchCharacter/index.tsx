@@ -1,21 +1,22 @@
 import React from 'react';
-import { InputSC } from './styled';
-
+import './index.css';
 interface IProps {
   searchValue: string;
   setSearchValue: (value: string) => void;
 }
 
 export const SearchCharacter = ({ searchValue, setSearchValue }: IProps) => {
-  //   const { searchValue, setSearchValue } = props;
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchValue(value);
+  };
 
   return (
-    <InputSC
+    <input
+      className={'search-character'}
       type='text'
       value={searchValue}
-      onChange={e => setSearchValue(e.target.value)}
+      onChange={handleInputChange}
     />
   );
 };
-
-function useSearchCharacter() {}

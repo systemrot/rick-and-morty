@@ -1,0 +1,8 @@
+.pagination {
+  display: flex;
+}
+
+.pagination > svg {
+  width: 50px;
+  cursor: pointer;
+}

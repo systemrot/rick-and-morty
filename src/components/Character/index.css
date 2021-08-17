@@ -1,0 +1,9 @@
+.preview {
+  padding: 20px;
+}
+
+.preview > img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}

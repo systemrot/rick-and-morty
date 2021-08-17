@@ -1,26 +1,26 @@
 import React from 'react';
 import ReactTooltip from 'react-tooltip';
-
-import { ImgSC, Wrapper } from './styled';
+import { CharacterDetail } from '../../api/hooks/characters/types';
+import './index.css';
 
 interface IProps {
-  data: any;
+  data: CharacterDetail;
 }
 
-export const Character = ({ data }: IProps['data']) => {
+export const Character = ({ data }: IProps) => {
   return (
-    <Wrapper key={data.id}>
+    <div className='preview' key={data.id}>
       <ReactTooltip
         multiline={true}
         type='dark'
         effect='solid'
         place='bottom'
       />
-      <ImgSC
+      <img
         src={data.image}
         alt={data.name}
         data-tip={`Name: ${data.name}<br /> Status: ${data.status}<br />Species: ${data.species}`}
       />
-    </Wrapper>
+    </div>
   );
 };

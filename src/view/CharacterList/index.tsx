@@ -1,22 +1,19 @@
 import React from 'react';
-import { useGetCharacters } from '../../api/hooks/characters/useGetCharacters';
+import { CharactersResponse } from '../../api/hooks/characters/types';
 import { Character } from '../../components/Character';
-import { Wrapper } from './styled';
+import './index.css';
 
 interface IProps {
   searchValue: string;
+  data: CharactersResponse;
 }
 
-export const CharacterList = ({ searchValue }: IProps) => {
-  const { data, loading } = useGetCharacters(searchValue);
-
-  if (loading) return <p>Loading...</p>;
-
+export const CharacterList = ({ searchValue, data }: IProps) => {
   return (
-    <Wrapper>
-      {data.results.map((character: any) => (
+    <div className='character-list'>
+      {data.results.map(character => (
         <Character key={character.id} data={character} />
       ))}
-    </Wrapper>
+    </div>
   );
 };

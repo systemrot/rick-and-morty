@@ -3,3 +3,5 @@ export enum Endpoint {
   LOCATION = 'location',
   EPISODE = 'episode',
 }
+
+export const baseUrl = 'https://rickandmortyapi.com/api/';
