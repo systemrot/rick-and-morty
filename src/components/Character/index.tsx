@@ -7,7 +7,7 @@ interface IProps {
   data: CharacterDetail;
 }
 
-export const Character = ({ data }: IProps) => {
+export const Character: React.FC<IProps> = ({ data }: IProps) => {
   return (
     <div className='preview' key={data.id}>
       <ReactTooltip

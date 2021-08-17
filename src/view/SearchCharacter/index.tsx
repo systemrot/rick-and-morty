@@ -5,7 +5,10 @@ interface IProps {
   setSearchValue: (value: string) => void;
 }
 
-export const SearchCharacter = ({ searchValue, setSearchValue }: IProps) => {
+export const SearchCharacter: React.FC<IProps> = ({
+  searchValue,
+  setSearchValue,
+}: IProps) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchValue(value);
@@ -13,7 +16,7 @@ export const SearchCharacter = ({ searchValue, setSearchValue }: IProps) => {
 
   return (
     <input
-      className={'search-character'}
+      className='search-character'
       type='text'
       value={searchValue}
       onChange={handleInputChange}

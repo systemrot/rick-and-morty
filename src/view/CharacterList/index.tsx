@@ -8,7 +8,7 @@ interface IProps {
   data: CharactersResponse;
 }
 
-export const CharacterList = ({ searchValue, data }: IProps) => {
+export const CharacterList: React.FC<IProps> = ({ data }: IProps) => {
   return (
     <div className='character-list'>
       {data.results.map(character => (

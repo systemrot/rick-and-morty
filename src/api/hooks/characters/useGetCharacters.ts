@@ -5,7 +5,10 @@ import { CharactersResponse } from './types';
 export const useGetCharacters = (
   searchValue: string,
   paginationUrl: string | null
-) => {
+): {
+  data: CharactersResponse | undefined;
+  loading: boolean;
+} => {
   const [{ data, loading }] = useAxios<CharactersResponse>(
     paginationUrl ? paginationUrl : configureUrl(searchValue)
   );

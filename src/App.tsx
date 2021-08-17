@@ -3,11 +3,13 @@ import { CharacterList } from './view/CharacterList';
 import { SearchCharacter } from './view/SearchCharacter';
 import { Pagination } from './components/Pagination';
 import { useGetCharacters } from './api/hooks/characters/useGetCharacters';
+import { useDebounce } from './hooks/useDebounce';
 
-export const App = () => {
+export const App: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [paginationUrl, setPaginationUrl] = useState<string | null>(null);
-  const { data, loading } = useGetCharacters(searchValue, paginationUrl);
+  const debounced = useDebounce(searchValue, 500);
+  const { data, loading } = useGetCharacters(debounced, paginationUrl);
 
   return (
     <div className='App'>
