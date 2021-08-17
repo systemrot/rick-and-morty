@@ -9,10 +9,7 @@ interface IProps {
   setPaginationUrl: (value: string | null) => void;
 }
 
-export const Pagination: React.FC<IProps> = ({
-  info,
-  setPaginationUrl,
-}: IProps) => {
+export const Pagination: React.FC<IProps> = ({ info, setPaginationUrl }) => {
   return (
     <div className='pagination'>
       <LeftArrowAlt onClick={() => setPaginationUrl(info.prev)} />

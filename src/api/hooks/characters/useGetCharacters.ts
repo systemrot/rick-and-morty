@@ -1,18 +1,20 @@
-import useAxios from 'axios-hooks';
+import useAxios, { ResponseValues } from 'axios-hooks';
 import { baseUrl, Endpoint } from '../../../constants/endpoints';
+import { useDebounce } from '../../../hooks/useDebounce';
 import { CharactersResponse } from './types';
 
 export const useGetCharacters = (
   searchValue: string,
   paginationUrl: string | null
-): {
-  data: CharactersResponse | undefined;
-  loading: boolean;
-} => {
-  const [{ data, loading }] = useAxios<CharactersResponse>(
-    paginationUrl ? paginationUrl : configureUrl(searchValue)
+): ResponseValues<CharactersResponse, unknown> => {
+  const debounced = useDebounce(searchValue, 500);
+
+  const [response] = useAxios<CharactersResponse>(
+    paginationUrl || configureUrl(debounced),
+    { useCache: false }
   );
-  return { data, loading };
+
+  return response;
 };
 
 function configureUrl(searchValue: string) {
